@@ -10,7 +10,12 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="stylesheet.css" >
+        <!--<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css"> -->
+
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -19,6 +24,41 @@
         
         <script src="" async defer></script>
 
-        <h1>HELLO!</h1>
-    </body>
-</html>
+          
+    
+        
+        <div class="container-fluid banner">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-md">
+                        <div class="navbar-brand">FOOD FINDERZ</div>
+                        <ul class="nav">
+                        
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">LOG OUT</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            
+            </div>
+            <div id="googleMap" style="width:50%;height:85%; float:right"></div>
+        </div>
+        
+
+        <script>
+        function myMap() {
+        var mapProp= {
+        center:new google.maps.LatLng(51.508742,-0.120850),
+        zoom:5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB20lJqGQ9WxvwHB-SfIn-Ln8-lK9sQh0
+        &callback=myMap"></script>
+
+        </body>
+    </html>
