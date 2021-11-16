@@ -1,0 +1,6 @@
+# ignore mac files lol
+
+.DS_store
+
+#ignore node_modules
+node_modules
