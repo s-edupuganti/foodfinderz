@@ -7,8 +7,10 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport"); 
-
+const yelp = require("yelp-fusion");
 const initializePass = require("./passportManager");
+const apiKey = '***REMOVED***';
+const client = yelp.client(apiKey);
 
 initializePass(passport);
 
@@ -17,6 +19,12 @@ const PORT = process.env.PORT || 4000;
 app.use(express.static("public"));
 // app.use(express.json());
 // app.use(express.urlencoded());
+
+///////////////////////////////////////////////////////////////////////
+//                                                                   //
+// LOGIN                                                             //
+//                                                                   //
+///////////////////////////////////////////////////////////////////////
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended : false}))
@@ -116,6 +124,44 @@ app.post("/login", passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
 }));
+
+
+///////////////////////////////////////////////////////////////////////
+//                                                                   //
+// Search                                                            //
+//                                                                   //
+///////////////////////////////////////////////////////////////////////
+
+
+app.post('/search', async (req, res) => {
+
+    console.log("Test!");
+    let {search} = req.body;
+
+    console.log( {
+        search
+    });
+
+
+
+
+    const searchRequest = {
+        term: search,
+        location: 'college station, tx'
+    };
+    
+    client.search(searchRequest).then(response => {
+    
+        const longitude = response.jsonBody.businesses[0].coordinates.longitude;
+        const latitude = response.jsonBody.businesses[0].coordinates.latitude;
+        console.log("hello");
+        console.log(latitude);
+        console.log(longitude);
+    });
+    
+});
+
+
 
 // app.post("/register", (req, res) => {
 

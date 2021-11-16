@@ -41,24 +41,43 @@
                         </ul>
                     </nav>
                 </div>
+
             
             </div>
+
+            <div>
+                <form action = "/search" method = "POST" id = "search-bar">
+                    <input type = "search" id = "search" name = "search" placeholder="Search...">
+                    <button>Search</button>
+                </form>
+            </div>
+
             <div id="googleMap" style="width:50%;height:85%; float:right"></div>
         </div>
         
 
-        <!-- <script>
+        <script>
+
+
         function myMap() {
-        var mapProp= {
-        center:new google.maps.LatLng(51.508742,-0.120850),
-        zoom:5,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        const myLatLng = { lat: 30.61604025619329, lng: -96.31888053128523 };
+        const map = new google.maps.Map(document.getElementById("googleMap"), {
+            zoom: 17,
+            center: myLatLng,
+        });
+
+        new google.maps.Marker({
+            position: myLatLng,
+            map,
+            title: "Hello World!",
+        });
         }
+
+
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB20lJqGQ9WxvwHB-SfIn-Ln8-lK9sQh0
-        &callback=myMap"></script> -->
+        &callback=myMap"></script>
 
         </body>
     </html>
