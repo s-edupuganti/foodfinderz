@@ -8,8 +8,8 @@
     "dev": "nodemon server.js"
   },
   "repository": {
-  "type": "git",
-  "url": ""
+    "type": "git",
+    "url": ""
   },
   "keywords": [],
   "author": "",

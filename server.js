@@ -12,7 +12,7 @@ const initializePass = require("./passportManager");
 
 initializePass(passport);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.static("public"));
 // app.use(express.json());
@@ -44,6 +44,10 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
     res.render('login');
+});
+
+app.get("/dashboard", (req, res) => {
+    res.render("dashboard");
 });
 
 app.post('/register', async (req, res) => {
@@ -108,7 +112,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.post("/login", passport.authenticate('local', {
-    successRedirect: 'dashboard.html',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true
 }));
@@ -119,9 +123,9 @@ app.post("/login", passport.authenticate('local', {
 
 // });
 
-app.get("/dashboard", (req, res) => {
-    res.sendFile('public/dashboard.html' , { root : __dirname});
-})
+// app.get("/dashboard", (req, res) => {
+//     res.sendFile('public/dashboard.html' , { root : __dirname});
+// })
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
