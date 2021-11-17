@@ -48,8 +48,8 @@
             <!-- <h3><%= latitude %> </h3>
             <h3><%= longitude %></h3> -->
 
-            <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:7%"></div>
-            <div style="padding-left:2%;float:left; padding-top:1%">
+            <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:1.5%"></div>
+            <div style="padding-left:2%;float:left; padding-top:1.25%">
                 <form action = "/search" method = "POST" id = "search-bar">
                     <input type = "search" id = "search" name = "search" placeholder="Address...">
                     <button onclick="insertMarker()">Apply</button>
@@ -59,7 +59,7 @@
                 </form>
                 
             </div>
-            <div style="padding-left:5%;float:left; padding-top:1%">
+            <div style="padding-left:4%;float:left;padding-top:1.25%">
                 <form action = "/search" method = "POST" id = "search-bar">
                     <input type = "search" id = "search" name = "search" placeholder="Search...">
                     <button onclick="insertMarker()">Search</button>
@@ -70,7 +70,7 @@
                 
             </div>
             
-            <div style="padding-left:2%;float:left; position:absolute; padding-top:3.5%"> 
+            <div style="padding-left:2%;float:left; position:absolute; margin-top:3.5%;"> 
                 <h2>Filters</h2>
                 <button onclick="insertMarker()">Apply</button>
                 <button onclick="insertMarker()">Reset</button>
@@ -167,7 +167,7 @@
                     </label>
                   </div>
             </div>
-            <div style="padding-left:23%;float:left; position:absolute; padding-top:3.5%">
+            <div style="padding-left:23%;float:left; position:absolute; margin-top: 3.5%;">
                 <h2>Results</h2>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
                 <h3 style="font-size: 150%;"><b><%= name %></b></h3>
