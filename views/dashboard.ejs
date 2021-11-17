@@ -45,32 +45,74 @@
             
             </div>
 
+            <!-- <h3><%= latitude %> </h3>
+            <h3><%= longitude %></h3> -->
+
             <div>
                 <form action = "/search" method = "POST" id = "search-bar">
                     <input type = "search" id = "search" name = "search" placeholder="Search...">
-                    <button>Search</button>
+                    <button onclick="insertMarker()">Search</button>
+                    <p id = "lol"></p>
+                    <p id = "lol2"></p>
+
                 </form>
+                <!-- <div>
+                <button onclick="testFunc()">Test</button>
+                <p id = "demo">lol</p>
+                <script>
+
+                    var x = "<%= userName %>";
+                    function testFunc() {
+                        
+                        console.log(x);
+                        document.getElementById("demo").innerHTML = x;
+                    }
+                </script>
+            </div> -->
             </div>
 
             <div id="googleMap" style="width:50%;height:85%; float:right"></div>
         </div>
-        
+        <!-- <div>
+            <h3>Hello</h3>
+        </div> -->
+
+        <!-- <h3>"<%= latitude %>"</h3> -->
 
         <script>
 
+            var longitude = parseFloat("<%= longitude %>");
+            var latitude = parseFloat("<%= latitude %>");
+
+
+
+            function insertMarker() {
+                // document.getElementById("lol").innerHTML = typeof(longitude);
+                // document.getElementById("lol2").innerHTML = latitude;
+                
+
+            }
+
+            console.log("test 0 lol");
 
         function myMap() {
-        const myLatLng = { lat: 30.61604025619329, lng: -96.31888053128523 };
-        const map = new google.maps.Map(document.getElementById("googleMap"), {
-            zoom: 16,
-            center: myLatLng,
-        });
+            // Create new map
+            var map = new google.maps.Map(document.getElementById("googleMap"), {
+                zoom: 17,
+                center: {lat: latitude,lng: longitude},
+            });
 
-        new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello World!",
-        });
+
+            function addMarker(coords) {
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                });
+            }
+
+            addMarker({lat: latitude,lng: longitude})
+
+
         }
 
 

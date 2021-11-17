@@ -54,8 +54,14 @@ app.get("/login", (req, res) => {
     res.render('login');
 });
 
+var longitude = -96.31888053128523;
+var latitude = 30.61604025619329;
+
+var userName = 'hello';
+
+
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard");
+    res.render("dashboard", {longitude: longitude, latitude: latitude, userName: userName});
 });
 
 app.post('/register', async (req, res) => {
@@ -135,14 +141,14 @@ app.post("/login", passport.authenticate('local', {
 
 app.post('/search', async (req, res) => {
 
+    // res.redirect("dashboard");
+
     console.log("Test!");
     let {search} = req.body;
 
     console.log( {
         search
     });
-
-
 
 
     const searchRequest = {
@@ -152,13 +158,15 @@ app.post('/search', async (req, res) => {
     
     client.search(searchRequest).then(response => {
     
-        const longitude = response.jsonBody.businesses[0].coordinates.longitude;
-        const latitude = response.jsonBody.businesses[0].coordinates.latitude;
+        longitude = response.jsonBody.businesses[0].coordinates.longitude;
+        latitude = response.jsonBody.businesses[0].coordinates.latitude;
         console.log("hello");
         console.log(latitude);
         console.log(longitude);
+        res.redirect("dashboard");
+
     });
-    
+
 });
 
 
