@@ -48,8 +48,18 @@
             <!-- <h3><%= latitude %> </h3>
             <h3><%= longitude %></h3> -->
 
+            <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:7%"></div>
+            <div style="padding-left:2%;float:left; padding-top:1%">
+                <form action = "/search" method = "POST" id = "search-bar">
+                    <input type = "search" id = "search" name = "search" placeholder="Address...">
+                    <button onclick="insertMarker()">Apply</button>
+                    <p id = "lol"></p>
+                    <p id = "lol2"></p>
 
-            <div>
+                </form>
+                
+            </div>
+            <div style="padding-left:5%;float:left; padding-top:1%">
                 <form action = "/search" method = "POST" id = "search-bar">
                     <input type = "search" id = "search" name = "search" placeholder="Search...">
                     <button onclick="insertMarker()">Search</button>
@@ -57,32 +67,115 @@
                     <p id = "lol2"></p>
 
                 </form>
-                <!-- <div>
-                <button onclick="testFunc()">Test</button>
-                <p id = "demo">lol</p>
-                <script>
-
-                    function testFunc() {
-                        
-                        console.log(x);
-                        document.getElementById("demo").innerHTML = x;
-                    }
-                </script>
-            </div> -->
+                
             </div>
-            <div>
-                <h3><b><%= name %></b></h3>
-                <h5><%= address %></h5>
+            
+            <div style="padding-left:2%;float:left; position:absolute; padding-top:3.5%"> 
+                <h2>Filters</h2>
+                <button onclick="insertMarker()">Apply</button>
+                <button onclick="insertMarker()">Reset</button>
+                <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
+                <h3>Distance</h3>
+                <span class="brmedium"></span> 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      5 miles
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      10 miles
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      15+ miles
+                    </label>
+                  </div>
+                  <span class="brmedium"></span> 
+                  <h3>Price</h3>
+                <span class="brmedium"></span> 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      $
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      $$
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      $$$+
+                    </label>
+                  </div>
+                  <span class="brmedium"></span> 
+                  <h3>Type of Food</h3>
+                <span class="brmedium"></span> 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Fast Food
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      American 
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Chinese 
+                    </label>
+                  </div><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Mediterranean 
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Thai 
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Italian 
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Middle Eastern 
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Vietnamese 
+                    </label>
+                  </div>
             </div>
-
-            <div id="googleMap" style="width:50%;height:85%; float:right"></div>
+            <div style="padding-left:23%;float:left; position:absolute; padding-top:3.5%">
+                <h2>Results</h2>
+                <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
+                <h3 style="font-size: 150%;"><b><%= name %></b></h3>
+                <h5 stle="font-size: 100%;"><%= address %></h5>
+            </div>
+            
         </div>
-        <!-- <div>
-            <h3>Hello</h3>
-        </div> -->
-
-        <!-- <h3>"<%= latitude %>"</h3> -->
-
+    
         <script>
 
             var longitude = parseFloat("<%= longitude %>");
