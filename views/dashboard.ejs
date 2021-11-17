@@ -36,7 +36,7 @@
                         <ul class="nav">
                         
                             <li class="nav-item">
-                                <a class="nav-link" href="#">LOG OUT</a>
+                                <a class="nav-link" href="/">LOG OUT</a>
                             </li>
                         </ul>
                     </nav>
@@ -47,6 +47,7 @@
 
             <!-- <h3><%= latitude %> </h3>
             <h3><%= longitude %></h3> -->
+
 
             <div>
                 <form action = "/search" method = "POST" id = "search-bar">
@@ -61,7 +62,6 @@
                 <p id = "demo">lol</p>
                 <script>
 
-                    var x = "<%= userName %>";
                     function testFunc() {
                         
                         console.log(x);
@@ -69,6 +69,10 @@
                     }
                 </script>
             </div> -->
+            </div>
+            <div>
+                <h3><b><%= name %></b></h3>
+                <h5><%= address %></h5>
             </div>
 
             <div id="googleMap" style="width:50%;height:85%; float:right"></div>

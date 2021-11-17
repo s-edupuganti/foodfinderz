@@ -56,12 +56,14 @@ app.get("/login", (req, res) => {
 
 var longitude = -96.31888053128523;
 var latitude = 30.61604025619329;
+var name;
+var address;
 
 var userName = 'hello';
 
 
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard", {longitude: longitude, latitude: latitude, userName: userName});
+    res.render("dashboard", {longitude: longitude, latitude: latitude, name: name, address: address});
 });
 
 app.post('/register', async (req, res) => {
@@ -160,6 +162,8 @@ app.post('/search', async (req, res) => {
     
         longitude = response.jsonBody.businesses[0].coordinates.longitude;
         latitude = response.jsonBody.businesses[0].coordinates.latitude;
+        name = response.jsonBody.businesses[0].name;
+        address = response.jsonBody.businesses[0].location.address1;
         console.log("hello");
         console.log(latitude);
         console.log(longitude);
