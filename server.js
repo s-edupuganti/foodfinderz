@@ -12,6 +12,7 @@ const initializePass = require("./passportManager");
 const apiKey = '***REMOVED***';
 const client = yelp.client(apiKey);
 
+
 initializePass(passport);
 
 const PORT = process.env.PORT || 4000;
@@ -56,14 +57,34 @@ app.get("/login", (req, res) => {
 
 var longitude = -96.31888053128523;
 var latitude = 30.61604025619329;
+var longitude1 = -96.31888053128523;
+var latitude1 = 30.61604025619329;
+var longitude2 = -96.31888053128523;
+var latitude2 = 30.61604025619329;
+var longitude3 = -96.31888053128523;
+var latitude3 = 30.61604025619329;
+var longitude4 = -96.31888053128523;
+var latitude4 = 30.61604025619329;
+var longitude5 = -96.31888053128523;
+var latitude5 = 30.61604025619329;
 var name;
 var address;
+var name1;
+var address1;
+var name2;
+var address2;
+var name3;
+var address3;
+var name4;
+var address4;
+var name5;
+var address5;
 
 var userName = 'hello';
 
 
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard", {longitude: longitude, latitude: latitude, name: name, address: address});
+    res.render("dashboard", {longitude: longitude, latitude: latitude, name: name, address: address, longitude1: longitude1, latitude1: latitude1, name1: name1, address1: address1, longitude2: longitude2, latitude2: latitude2, name2: name2, address2: address2, longitude2: longitude2, latitude3: latitude3, name3: name3, address3: address3, longitude3: longitude3, latitude3: latitude3, name3: name3, address3: address3, longitude4: longitude4, latitude4: latitude4, name4: name4, address4: address4, longitude5: longitude5, latitude5: latitude5, name5: name5, address5: address5 });
 });
 
 app.post('/register', async (req, res) => {
@@ -157,7 +178,8 @@ app.post('/search', async (req, res) => {
         term: search,
         location: 'college station, tx'
     };
-    
+
+        
     client.search(searchRequest).then(response => {
     
         longitude = response.jsonBody.businesses[0].coordinates.longitude;
@@ -167,6 +189,87 @@ app.post('/search', async (req, res) => {
         console.log("hello");
         console.log(latitude);
         console.log(longitude);
+        res.redirect("dashboard");
+
+    });
+
+});
+
+app.post('/setUp', async (req, res) => {
+
+    // res.redirect("dashboard");
+
+    console.log("Test!");
+    console.log("SetUp")
+
+    const searchRequest = {
+        term: 'restaurant',
+        location: 'college station, tx'
+    };
+
+        
+    client.search(searchRequest).then(response => {
+        var i = 0;
+        longitude = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude = response.jsonBody.businesses[i].coordinates.latitude;
+        name = response.jsonBody.businesses[i].name;
+        address = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude);
+        console.log(longitude);
+        i = i+1;
+        while (response.jsonBody.businesses[i].name == response.jsonBody.businesses[i-1].name) {
+            i = i+1;
+        }
+        longitude1 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude1 = response.jsonBody.businesses[i].coordinates.latitude;
+        name1 = response.jsonBody.businesses[i].name;
+        address1 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude1);
+        console.log(longitude1);
+        i = i+1;
+        while (response.jsonBody.businesses[i].name == response.jsonBody.businesses[i-1].name) {
+            i = i+1;
+        }
+        longitude2 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude2 = response.jsonBody.businesses[i].coordinates.latitude;
+        name2 = response.jsonBody.businesses[i].name;
+        address2 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude1);
+        console.log(longitude1);
+        i = i+1;
+        while (response.jsonBody.businesses[i].name == response.jsonBody.businesses[i-1].name) {
+            i = i+1;
+        }
+        longitude3 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude3 = response.jsonBody.businesses[i].coordinates.latitude;
+        name3 = response.jsonBody.businesses[i].name;
+        address3 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude1);
+        console.log(longitude1);
+        i = i+1;
+        while (response.jsonBody.businesses[i].name == response.jsonBody.businesses[i-1].name) {
+            i = i+1;
+        }
+        longitude4 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude4 = response.jsonBody.businesses[i].coordinates.latitude;
+        name4 = response.jsonBody.businesses[i].name;
+        address4 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude1);
+        console.log(longitude1);
+        i = i+1;
+        console.log(i);
+        longitude5 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude5 = response.jsonBody.businesses[i].coordinates.latitude;
+        name5 = response.jsonBody.businesses[i].name;
+        address5 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello2");
+        console.log(latitude1);
+        console.log(longitude1);
         res.redirect("dashboard");
 
     });
