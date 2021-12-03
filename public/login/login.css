@@ -212,3 +212,15 @@ input {
 	transform: translateX(20%);
 }
 
+.dark-mode {
+    
+	background: #000;
+	filter: invert(1) hue-rotate(180deg)
+  }
+  
+  .but2{
+  
+	position: absolute;
+	right: 10px;
+	top: 10px;
+  }
