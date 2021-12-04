@@ -25,12 +25,11 @@
         <script src="" async defer></script>
 
           
-        
+    
         
         <div class="container-fluid banner">
             
             <div class="row">
-              
                 <div class="col-md-12">
                     <nav class="navbar navbar-md">
                         <div class="navbar-brand">FOOD FINDERZ</div>
@@ -50,12 +49,14 @@
             <h3><%= longitude %></h3> -->
 
             <button onclick="changedark()" class="btn but2 btn-secondary btn-sm">Dark-Mode</button>
-        <script type="text/javascript" src="functions.js"></script>
+            <script type="text/javascript" src="functions.js"></script>
 
            <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:1.5%"></div> 
+           
            <form action="/setUp" method="POST">
-            <button onclick="insertMarker()">Here</button>
+            <button onclick="insertMarker()">Show me restaurants!</button>
            </form>
+          
             <div style="padding-left:2%;float:left; padding-top:1.25%">
                 <form action = "/search" method = "POST" id = "search-bar">
                     <input type = "search" id = "search" name = "search" placeholder="Address...">
@@ -78,104 +79,53 @@
             </div>
 
             <!--Filters-->
-            <div style="padding-left:2%;float:left; position:absolute; margin-top:3.5%;"> 
+            <div style="padding-left:2%; float:left"> 
                 <h2>Filters</h2>
-                <button onclick="insertMarker()">Apply</button>
+                
                 <button onclick="insertMarker()">Reset</button>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
                 <h3>Distance</h3>
+                <!--<span class="brmedium"></span> -->
+                <form action='/filter' method = "POST">
+                  <!--<button onclick="insertMarker()">Apply</button>-->
+                  <input class = "submit" type="submit" value="Submit">
+
                 <span class="brmedium"></span> 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      5 miles
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      10 miles
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      15+ miles
-                    </label>
-                  </div>
-                  <span class="brmedium"></span> 
+                  <input type="radio" id="5mi" name="distance" value="5mi">
+                    <label for="5mi">5 miles</label><br>
+                  <input type="radio" id="10mi" name="distance" value="10mi">
+                    <label for="10mi">10 miles</label><br>
+                  <input type="radio" id="15mi" name="distance" value="15mi">
+                    <label for="15mi">15+ miles</label>
+                <span class="brmedium"></span> 
                   <h3>Price</h3>
-                <span class="brmedium"></span> 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      $
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      $$
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      $$$+
-                    </label>
-                  </div>
                   <span class="brmedium"></span> 
+                    <input type="radio" id="$" name="price" value="$">
+                      <label for="$">$</label><br>
+                    <input type="radio" id="$$" name="price" value="$$">
+                      <label for="$$">$$</label><br>
+                    <input type="radio" id="$$$" name="price" value="$$$">
+                      <label for="$$$">$$$</label>
+                  <br> 
                   <h3>Type of Food</h3>
                 <span class="brmedium"></span> 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Fast Food
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      American 
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Chinese 
-                    </label>
-                  </div><div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Mediterranean 
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Thai 
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Italian 
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Middle Eastern 
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Vietnamese 
-                    </label>
-                  </div>
+                
+                  <input type="radio" id="Fast" name="types" value="Fast Food">
+                    <label for="Fast">Fast Food</label><br>
+                  <input type="radio" id="American" name="types" value="American">
+                    <label for="American">American</label><br>
+                  <input type="radio" id="Chinese" name="types" value="Chinese">
+                    <label for="Chinese">Chinese</label><br>
+                  <input type="radio" id="Mediterranean" name="types" value="Mediterranean">
+                    <label for="Mediterranean">Mediterranean</label><br>
+                  <input type="radio" id="Thai" name="types" value="Thai">
+                    <label for="Thai">Thai</label><br>
+                  <input type="radio" id="Italian" name="types" value="Italian">
+                    <label for="Italian">Italian</label>
+                <br>
+                </form>
             </div>
-            <div style="padding-left:23%;float:left; position:absolute; margin-top: 3.5%;">
+            <div style="margin-left:20%; float:left; position:absolute; margin-top: 4.5%; margin-right: 60%;">
                 <h2>Results</h2>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
                 <h3 style="font-size: 150%;"><b><%= name %></b></h3>
@@ -225,11 +175,14 @@
             }
 
             addMarker({lat: latitude,lng: longitude})
-            addMarker({lat: latitude1,lng: longitude1})
-            addMarker({lat: latitude2,lng: longitude2})
-            addMarker({lat: latitude3,lng: longitude3})
-            addMarker({lat: latitude4,lng: longitude4})
-            addMarker({lat: latitude5,lng: longitude5})
+            console.log("HI");
+            if (name1 != "") {
+              addMarker({lat: latitude1,lng: longitude1})
+              addMarker({lat: latitude2,lng: longitude2})
+              addMarker({lat: latitude3,lng: longitude3})
+              addMarker({lat: latitude4,lng: longitude4})
+              addMarker({lat: latitude5,lng: longitude5})
+            }
 
 
         }

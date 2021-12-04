@@ -15,7 +15,7 @@ const client = yelp.client(apiKey);
 
 initializePass(passport);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 // app.use(express.json());
@@ -79,6 +79,8 @@ var name4;
 var address4;
 var name5;
 var address5;
+
+//let oneDollar = 0;
 
 var userName = 'hello';
 
@@ -189,6 +191,18 @@ app.post('/search', async (req, res) => {
         console.log("hello");
         console.log(latitude);
         console.log(longitude);
+        name1 = "";
+        address1 = "";
+        name2 = "";
+        address2 = "";
+        name3 = "";
+        address3 = "";
+        name4 = "";
+        address4 = "";
+        name5 = "";
+        address5 = "";
+
+
         res.redirect("dashboard");
 
     });
@@ -270,6 +284,227 @@ app.post('/setUp', async (req, res) => {
         console.log("hello2");
         console.log(latitude1);
         console.log(longitude1);
+        res.redirect("dashboard");
+
+    });
+
+});
+
+app.post('/filter', (req, res) => {
+
+    // res.redirect("dashboard");
+
+    console.log("Filtering...");
+    
+
+    // const searchRequest = {
+    //     term: 'restaurant',
+    //     location: 'college station, tx'
+    // };
+
+    var price = 'False';
+    var priceValue;
+    var distance = 'False';
+    var distanceValue;
+    var type = 'False';
+    var typeValue;
+    
+    console.log(req.body.price);
+    if (req.body.price == '$' || req.body.price =="$$" || req.body.price =="$$$") {
+        console.log("price input taken");
+        price = 'True';
+        priceValue = req.body.price;
+        //console.log(priceValue);
+    } else {
+        console.log("no price");
+    }
+
+    console.log(req.body.distance);
+    if (req.body.distance == '5mi' || req.body.distance =="10mi" || req.body.distance =="15mi") {
+        console.log("distance input taken");
+        distance = 'True';
+        distanceValue = req.body.distance;
+        //console.log(distanceValue);
+    } else {
+        console.log("no distance");
+    }
+
+    console.log(req.body.types);
+    if (req.body.types == 'Fast' || req.body.types =="American" || req.body.types =="Thai" || req.body.types == "Mediterranean" || req.body.types == "Chinese" || req.body.types == "Italian") {
+        console.log("types input taken");
+        type = 'True';
+        typeValue = req.body.types;
+        //console.log(typeValue);
+    } else {
+        console.log("no types");
+    }
+
+    const searchRequest = {
+        term: 'restaurant',
+        location: 'college station, tx'
+    };
+
+        
+    client.search(searchRequest).then(response => {
+        var i = 0;
+        if (price == "True") {
+            while (response.jsonBody.businesses[i].price != priceValue) {
+                i = i+1;
+            }
+        }
+        if (distance == "True") {
+            while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
+                i = i+1;
+            }
+        }
+        if (type == "True") {
+            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
+                i = i+1;
+            }
+        }
+        console.log(i);
+        longitude = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude = response.jsonBody.businesses[i].coordinates.latitude;
+        name = response.jsonBody.businesses[i].name;
+        address = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude);
+        console.log(longitude);
+        //res.redirect("dashboard");
+        
+        i = i+1
+        //var i = 0;
+        if (price == "True") {
+            while (response.jsonBody.businesses[i].price != priceValue) {
+                i = i+1;
+            }
+        }
+        if (distance == "True") {
+            while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
+                i = i+1;
+            }
+        }
+        if (type == "True") {
+            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
+                i = i+1;
+            }
+        }
+        console.log(i);
+        longitude1 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude1 = response.jsonBody.businesses[i].coordinates.latitude;
+        name1 = response.jsonBody.businesses[i].name;
+        address1 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude1);
+        console.log(longitude1);
+        res.redirect("dashboard");
+
+        i = i+1
+        //var i = 0;
+        if (price == "True") {
+            while (response.jsonBody.businesses[i].price != priceValue) {
+                i = i+1;
+            }
+        }
+        if (distance == "True") {
+            while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
+                i = i+1;
+            }
+        }
+        if (type == "True") {
+            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
+                i = i+1;
+            }
+        }
+        console.log(i);
+        longitude2 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude2 = response.jsonBody.businesses[i].coordinates.latitude;
+        name2 = response.jsonBody.businesses[i].name;
+        address2 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude2);
+        console.log(longitude2);
+        //res.redirect("dashboard");
+
+        i = i+1
+        //var i = 0;
+        if (price == "True") {
+            while (response.jsonBody.businesses[i].price != priceValue) {
+                i = i+1;
+            }
+        }
+        if (distance == "True") {
+            while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
+                i = i+1;
+            }
+        }
+        if (type == "True") {
+            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
+                i = i+1;
+            }
+        }
+        console.log(i);
+        longitude3 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude3 = response.jsonBody.businesses[i].coordinates.latitude;
+        name3 = response.jsonBody.businesses[i].name;
+        address3 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude3);
+        console.log(longitude3);
+        //res.redirect("dashboard");
+
+        i = i+1
+        //var i = 0;
+        if (price == "True") {
+            while (response.jsonBody.businesses[i].price != priceValue) {
+                i = i+1;
+            }
+        }
+        if (distance == "True") {
+            while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
+                i = i+1;
+            }
+        }
+        if (type == "True") {
+            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
+                i = i+1;
+            }
+        }
+        console.log(i);
+        longitude4 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude4 = response.jsonBody.businesses[i].coordinates.latitude;
+        name4 = response.jsonBody.businesses[i].name;
+        address4 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude4);
+        console.log(longitude4);
+        //res.redirect("dashboard");
+
+        i = i+1
+        //var i = 0;
+        if (price == "True") {
+            while (response.jsonBody.businesses[i].price != priceValue) {
+                i = i+1;
+            }
+        }
+        if (distance == "True") {
+            while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
+                i = i+1;
+            }
+        }
+        if (type == "True") {
+            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
+                i = i+1;
+            }
+        }
+        console.log(i);
+        longitude5 = response.jsonBody.businesses[i].coordinates.longitude;
+        latitude5 = response.jsonBody.businesses[i].coordinates.latitude;
+        name5 = response.jsonBody.businesses[i].name;
+        address5 = response.jsonBody.businesses[i].location.address1;
+        console.log("hello");
+        console.log(latitude5);
+        console.log(longitude5);
         res.redirect("dashboard");
 
     });
