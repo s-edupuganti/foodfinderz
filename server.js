@@ -9,8 +9,10 @@ const flash = require("express-flash");
 const passport = require("passport"); 
 const yelp = require("yelp-fusion");
 const initializePass = require("./passportManager");
+const geolocation = require("ip-geolocation-api-javascript-sdk");
 const apiKey = '***REMOVED***';
-const client = yelp.client(apiKey);
+const yelpClient = yelp.client(apiKey);
+// const geolocationClient = new geolocation("b1873a2844c04d1b95fd55bb47da374e", false);
 
 
 initializePass(passport);
@@ -18,6 +20,24 @@ initializePass(passport);
 const PORT = process.env.PORT || 4000;
 
 app.use(express.static("public"));
+
+const request = require('request-promise');
+
+// request('https://api.freegeoip.app/json/?apikey=0dd65850-52eb-11ec-b401-9933d41cf968')
+// .then(response => {
+//     const result = JSON.parse(response);
+//     // const prettyJson = JSON.stringify(result, null, 4);
+//     console.log(result.longitude);
+//     console.log(result.latitude);
+    
+//     var userLong = result.longitude;
+//     var userLat = result.latitude;
+// })
+// .catch(error => {
+//     console.log(error)
+// })
+
+
 // app.use(express.json());
 // app.use(express.urlencoded());
 
@@ -48,15 +68,46 @@ app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 
 app.get("/", (req, res) => {
+
+
     res.sendFile(path.join(__dirname, '/index.html'));
+
 });
 
 app.get("/login", (req, res) => {
     res.render('login');
 });
 
-var longitude = -96.31888053128523;
-var latitude = 30.61604025619329;
+// var userLong;
+// var userLat;
+
+var latitude;
+var longitude;
+
+app.post('/login', function (req, res, next) {
+    console.log("Getting to first function!");
+    // console.log(req.body);
+    console.log();
+    longitude = req.body.userLong;
+    latitude = req.body.userLat;
+    console.log("User Longitude: " + longitude);
+    console.log("User latitude: " + latitude);
+    console.log();
+    next()
+}, passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
+
+
+// var longitude = -96.31888053128523;
+// var latitude = 30.61604025619329;
+// var longitude = parseFloat(userLong);
+// var latitude = parseFloat(userLat);
+// console.log(longitude);
+// var longitude = -96.31888053128523;
+// var latitude = 30.61604025619329;
 var longitude1 = -96.31888053128523;
 var latitude1 = 30.61604025619329;
 var longitude2 = -96.31888053128523;
@@ -148,11 +199,7 @@ app.post('/register', async (req, res) => {
 
 });
 
-app.post("/login", passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
+
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -178,9 +225,8 @@ app.post('/search', async (req, res) => {
         term: search,
         location: 'college station, tx'
     };
-
-        
-    client.search(searchRequest).then(response => {
+    
+    yelpClient.search(searchRequest).then(response => {
     
         longitude = response.jsonBody.businesses[0].coordinates.longitude;
         latitude = response.jsonBody.businesses[0].coordinates.latitude;
