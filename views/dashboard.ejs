@@ -25,11 +25,12 @@
         <script src="" async defer></script>
 
           
-    
+        
         
         <div class="container-fluid banner">
             
             <div class="row">
+              
                 <div class="col-md-12">
                     <nav class="navbar navbar-md">
                         <div class="navbar-brand">FOOD FINDERZ</div>
@@ -48,7 +49,13 @@
             <!-- <h3><%= latitude %> </h3>
             <h3><%= longitude %></h3> -->
 
-            <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:1.5%"></div>
+            <button onclick="changedark()" class="btn but2 btn-secondary btn-sm">Dark-Mode</button>
+        <script type="text/javascript" src="functions.js"></script>
+
+           <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:1.5%"></div> 
+           <form action="/setUp" method="POST">
+            <button onclick="insertMarker()">Here</button>
+           </form>
             <div style="padding-left:2%;float:left; padding-top:1.25%">
                 <form action = "/search" method = "POST" id = "search-bar">
                     <input type = "search" id = "search" name = "search" placeholder="Address...">
@@ -69,7 +76,8 @@
                 </form>
                 
             </div>
-            
+
+            <!--Filters-->
             <div style="padding-left:2%;float:left; position:absolute; margin-top:3.5%;"> 
                 <h2>Filters</h2>
                 <button onclick="insertMarker()">Apply</button>
@@ -115,13 +123,6 @@
                     <label class="form-check-label" for="flexCheckChecked">
                       $$$+
                     </label>
-                    <!-- <div>
-                      <p>Click the button to get your coordinates.</p>
-            
-                      <button onclick="getLocation()">Try It</button>
-                      
-                      <p id="demo"></p>
-                    </div> -->
                   </div>
                   <span class="brmedium"></span> 
                   <h3>Type of Food</h3>
@@ -179,27 +180,32 @@
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
                 <h3 style="font-size: 150%;"><b><%= name %></b></h3>
                 <h5 stle="font-size: 100%;"><%= address %></h5>
+                <br>
+                <h3 style="font-size: 150%;"><b><%= name1 %></b></h3>
+                <h5 stle="font-size: 100%;"><%= address1 %></h5>
+                <br>
+                <h3 style="font-size: 150%;"><b><%= name2 %></b></h3>
+                <h5 stle="font-size: 100%;"><%= address2 %></h5>
+                <br>
+                <h3 style="font-size: 150%;"><b><%= name3 %></b></h3>
+                <h5 stle="font-size: 100%;"><%= address3 %></h5>
+                <br>
+                <h3 style="font-size: 150%;"><b><%= name4 %></b></h3>
+                <h5 stle="font-size: 100%;"><%= address4 %></h5>
             </div>
             
         </div>
-
-
     
         <script>
-
+          // Setting up Map
             var longitude = parseFloat("<%= longitude %>");
             var latitude = parseFloat("<%= latitude %>");
-
-            // var x = document.getElementById("demo");
-
-
-
-            function insertMarker() {
-                // document.getElementById("lol").innerHTML = typeof(longitude);
-                // document.getElementById("lol2").innerHTML = latitude;
-                
-
-            }
+            var longitude1 = parseFloat("<%= longitude1 %>");
+            var latitude1 = parseFloat("<%= latitude1 %>");
+            var longitude2 = parseFloat("<%= longitude2 %>");
+            var latitude2 = parseFloat("<%= latitude2 %>");
+            var longitude3 = parseFloat("<%= longitude3 %>");
+            var latitude3 = parseFloat("<%= latitude3 %>");
 
             console.log("test 0 lol");
 
@@ -207,10 +213,10 @@
             // Create new map
             var map = new google.maps.Map(document.getElementById("googleMap"), {
                 zoom: 17,
-                center: {lat: latitude ,lng: longitude},
+                center: {lat: latitude, lng: longitude},
             });
 
-
+           
             function addMarker(coords) {
                 var marker = new google.maps.Marker({
                     position: coords,
@@ -219,6 +225,11 @@
             }
 
             addMarker({lat: latitude,lng: longitude})
+            addMarker({lat: latitude1,lng: longitude1})
+            addMarker({lat: latitude2,lng: longitude2})
+            addMarker({lat: latitude3,lng: longitude3})
+            addMarker({lat: latitude4,lng: longitude4})
+            addMarker({lat: latitude5,lng: longitude5})
 
 
         }
