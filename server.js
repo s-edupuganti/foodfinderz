@@ -22,18 +22,19 @@ app.use(express.static("public"));
 
 const request = require('request-promise');
 
-request('https://api.freegeoip.app/json/?apikey=0dd65850-52eb-11ec-b401-9933d41cf968')
-.then(response => {
-    const result = JSON.parse(response);
-    // const prettyJson = JSON.stringify(result, null, 4);
-    console.log(result.longitude);
-    console.log(result.latitude);
-    var userLong = result.longitude;
-    var userLat = result.latitude;
-})
-.catch(error => {
-    console.log(error)
-})
+// request('https://api.freegeoip.app/json/?apikey=0dd65850-52eb-11ec-b401-9933d41cf968')
+// .then(response => {
+//     const result = JSON.parse(response);
+//     // const prettyJson = JSON.stringify(result, null, 4);
+//     console.log(result.longitude);
+//     console.log(result.latitude);
+    
+//     var userLong = result.longitude;
+//     var userLat = result.latitude;
+// })
+// .catch(error => {
+//     console.log(error)
+// })
 
 
 // app.use(express.json());
@@ -76,8 +77,34 @@ app.get("/login", (req, res) => {
     res.render('login');
 });
 
-var longitude = -96.31888053128523;
-var latitude = 30.61604025619329;
+// var userLong;
+// var userLat;
+
+var latitude;
+var longitude;
+
+app.post('/login', function (req, res, next) {
+    console.log("Getting to first function!");
+    // console.log(req.body);
+    console.log();
+    longitude = req.body.userLong;
+    latitude = req.body.userLat;
+    console.log("User Longitude: " + longitude);
+    console.log("User latitude: " + latitude);
+    console.log();
+    next()
+}, passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
+
+
+// var longitude = -96.31888053128523;
+// var latitude = 30.61604025619329;
+// var longitude = parseFloat(userLong);
+// var latitude = parseFloat(userLat);
+// console.log(longitude);
 var name;
 var address;
 
@@ -149,11 +176,7 @@ app.post('/register', async (req, res) => {
 
 });
 
-app.post("/login", passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
+
 
 
 ///////////////////////////////////////////////////////////////////////

@@ -115,6 +115,13 @@
                     <label class="form-check-label" for="flexCheckChecked">
                       $$$+
                     </label>
+                    <!-- <div>
+                      <p>Click the button to get your coordinates.</p>
+            
+                      <button onclick="getLocation()">Try It</button>
+                      
+                      <p id="demo"></p>
+                    </div> -->
                   </div>
                   <span class="brmedium"></span> 
                   <h3>Type of Food</h3>
@@ -175,11 +182,15 @@
             </div>
             
         </div>
+
+
     
         <script>
 
             var longitude = parseFloat("<%= longitude %>");
             var latitude = parseFloat("<%= latitude %>");
+
+            // var x = document.getElementById("demo");
 
 
 
@@ -196,7 +207,7 @@
             // Create new map
             var map = new google.maps.Map(document.getElementById("googleMap"), {
                 zoom: 17,
-                center: {lat: latitude,lng: longitude},
+                center: {lat: latitude ,lng: longitude},
             });
 
 
