@@ -224,3 +224,22 @@ input {
 	right: 10px;
 	top: 10px;
   }
+
+.speech {
+	width: 300px; 
+	padding: 0; 
+	margin: 0
+}
+
+.speech input {
+	border: 0; 
+	width: 240px; 
+	display: inline-block; 
+	height: 30px;
+}
+
+.speech img {
+	cursor:pointer;
+	float: right; 
+	width: 40px;
+}
