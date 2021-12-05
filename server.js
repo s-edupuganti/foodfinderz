@@ -55,8 +55,8 @@ app.get("/login", (req, res) => {
     res.render('login');
 });
 
-var longitude = -96.31888053128523;
-var latitude = 30.61604025619329;
+// var longitude = -96.31888053128523;
+// var latitude = 30.61604025619329;
 var longitude1 = -96.31888053128523;
 var latitude1 = 30.61604025619329;
 var longitude2 = -96.31888053128523;
@@ -79,6 +79,25 @@ var name4;
 var address4;
 var name5;
 var address5;
+
+var latitude;
+var longitude;
+
+app.post('/login', function (req, res, next) {
+    console.log("Getting to first function!");
+    // console.log(req.body);
+    console.log();
+    longitude = req.body.userLong;
+    latitude = req.body.userLat;
+    console.log("User Longitude: " + longitude);
+    console.log("User latitude: " + latitude);
+    console.log();
+    next()
+}, passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
 
 //let oneDollar = 0;
 

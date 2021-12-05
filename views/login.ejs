@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="login.css" />
 <button onclick="changedark()" class="btn but2 btn-secondary btn-sm">Dark-Mode</button>
     <script type="text/javascript" src="functions.js"></script>
+<body onload="getLocation()">
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="/register" method = "POST">
@@ -33,6 +34,32 @@
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="/login" method="POST">
+			<input type = "hidden" name = "userLat" id = "userLat" />
+			<input type = "hidden" name = "userLong" id = "userLong" />
+
+			<script>
+				var userLat = document.getElementById('userLat');
+				var userLong = document.getElementById('userLong');
+
+				function getLocation() {
+					if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+					} else { 
+					// x.innerHTML = "Geolocation is not supported by this browser.";
+					}
+				}
+
+				function showPosition(position) {
+					userLat.value = (position.coords.latitude);
+					userLong.value = position.coords.longitude;
+					// userLong = pposition.coords.longitude
+					// alert(userLat.value);
+					// alert(userLong);
+				}
+
+
+
+			</script>
 			<h1>Sign in</h1>
 			<div class = "speech">
 				<input 
@@ -49,7 +76,7 @@
 				placeholder="Password" />
 				<img id = "password2" onclick="startDictation(this.id)" src="//i.imgur.com/cHidSVu.gif" />
 			</div>
-			<a href="#">Forgot your password?</a>
+			<!-- <a href="#">Forgot your password?</a> -->
 			<button>Sign In</button>
             <br>
             <button><a href="../index.html">Back to Home</a></button>
