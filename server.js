@@ -343,6 +343,7 @@ app.post('/filter', (req, res) => {
     if (type == 'True') {
         searchTerm = typeValue;
     }
+    
     const searchRequest = {
         term: searchTerm,
         location: 'college station, tx'
@@ -374,11 +375,11 @@ app.post('/filter', (req, res) => {
         
         i = i+1
         //var i = 0;
-        if (price == "True") {
-            while (response.jsonBody.businesses[i].price != priceValue) {
-                i = i+1;
-            }
-        }
+        // if (price == "True") {
+        //     while (response.jsonBody.businesses[i].price != priceValue) {
+        //         i = i+1;
+        //     }
+        // }
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
@@ -397,11 +398,11 @@ app.post('/filter', (req, res) => {
 
         i = i+1
         //var i = 0;
-        if (price == "True") {
-            while (response.jsonBody.businesses[i].price != priceValue) {
-                i = i+1;
-            }
-        }
+        // if (price == "True") {
+        //     while (response.jsonBody.businesses[i].price != priceValue) {
+        //         i = i+1;
+        //     }
+        // }
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
@@ -420,11 +421,11 @@ app.post('/filter', (req, res) => {
 
         i = i+1
         //var i = 0;
-        if (price == "True") {
-            while (response.jsonBody.businesses[i].price != priceValue) {
-                i = i+1;
-            }
-        }
+        // if (price == "True") {
+        //     while (response.jsonBody.businesses[i].price != priceValue) {
+        //         i = i+1;
+        //     }
+        // }
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
@@ -443,11 +444,11 @@ app.post('/filter', (req, res) => {
 
         i = i+1
         //var i = 0;
-        if (price == "True") {
-            while (response.jsonBody.businesses[i].price != priceValue) {
-                i = i+1;
-            }
-        }
+        // if (price == "True") {
+        //     while (response.jsonBody.businesses[i].price != priceValue) {
+        //         i = i+1;
+        //     }
+        // }
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
@@ -471,11 +472,11 @@ app.post('/filter', (req, res) => {
 
         i = i+1
         //var i = 0;
-        if (price == "True") {
-            while (response.jsonBody.businesses[i].price != priceValue) {
-                i = i+1;
-            }
-        }
+        // if (price == "True") {
+        //     while (response.jsonBody.businesses[i].price != priceValue) {
+        //         i = i+1;
+        //     }
+        // }
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
