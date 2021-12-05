@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="stylesheet.css" >
         <!--<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script> 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css"> -->
@@ -54,29 +54,18 @@
            <div id="googleMap" style="width:50%;height:75%; float:right; padding-top:1.5%"></div> 
            
            <form action="/setUp" method="POST">
-            <button onclick="insertMarker()">Show me restaurants!</button>
+                <div style="padding-left:2%;float:left;padding-top:1.25%;position:absolute">
+                    <button onclick="insertMarker()">Show me restaurants!</button>
+                </div>
            </form>
           
-            <div style="padding-left:2%;float:left; padding-top:1.25%">
-                <form action = "/search" method = "POST" id = "search-bar">
-                    <div class = "speech">
-                        <input type = "search" id = "search1" name = "search" placeholder="Address...">
-                        <img id = "search1" onclick="startDictation(this.id)" src="//i.imgur.com/cHidSVu.gif" />
-                    </div>
-                    <button onclick="insertMarker()">Apply</button>
-                    <p id = "lol"></p>
-                    <p id = "lol2"></p>
-
-                </form>
-                
-            </div>
-            <div style="padding-left:4%;float:left;padding-top:1.25%">
+            <div style="padding-right:11%;float:right;padding-top:1.25%">
                 <form action = "/search" method = "POST" id = "search-bar">
                     <div class = "speech">
                         <input type = "search" id = "search2" name = "search" placeholder="Search...">
                         <img id = "search2" onclick="startDictation(this.id)" src="//i.imgur.com/cHidSVu.gif" />
+                        <button onclick="insertMarker()">Search</button>
                     </div>
-                    <button onclick="insertMarker()">Search</button>
                     <p id = "lol"></p>
                     <p id = "lol2"></p>
 
@@ -84,19 +73,20 @@
                 
             </div>
 
+            <br><br><br>
+
             <!--Filters-->
-            <div style="padding-left:2%; float:left"> 
+            <div style="padding-left:2%; float:left;position: relative;"> 
                 <h2>Filters</h2>
-                
-                <button onclick="insertMarker()">Reset</button>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
-                <h3>Distance</h3>
+                <button onclick="insertMarker()">Reset</button>
                 <!--<span class="brmedium"></span> -->
                 <form action='/filter' method = "POST">
                   <!--<button onclick="insertMarker()">Apply</button>-->
-                  <input class = "submit" type="submit" value="Submit">
+                  <button onclick="insertMarker()">Submit</button>
 
                 <span class="brmedium"></span> 
+                <h3>Distance</h3>
                   <input type="radio" id="5mi" name="distance" value="5mi">
                     <label for="5mi">5 miles</label><br>
                   <input type="radio" id="10mi" name="distance" value="10mi">
@@ -131,7 +121,7 @@
                 <br>
                 </form>
             </div>
-            <div style="margin-left:20%; float:left; position:absolute; margin-top: 4.5%; margin-right: 60%;">
+            <div style="margin-left:20%; float:left; position:absolute; margin-right: 60%;">
                 <h2>Results</h2>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
                 <h3 style="font-size: 150%;"><b><%= name %></b></h3>

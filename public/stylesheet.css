@@ -80,7 +80,8 @@ body {
 .speech {
 	width: 300px; 
 	padding: 0; 
-	margin: 0
+	margin: 0;
+  white-space: nowrap;
 }
 
 .speech input {
@@ -92,6 +93,10 @@ body {
 
 .speech img {
 	cursor:pointer;
-	float: right; 
 	width: 40px;
+  display: inline-block; 
+}
+
+.speech button {
+  display: inline-block;
 }
