@@ -330,7 +330,7 @@ app.post('/filter', (req, res) => {
     }
 
     console.log(req.body.types);
-    if (req.body.types == 'Fast' || req.body.types =="American" || req.body.types =="Thai" || req.body.types == "Mediterranean" || req.body.types == "Chinese" || req.body.types == "Italian") {
+    if (req.body.types == 'Fast Food' || req.body.types =="American" || req.body.types =="Thai" || req.body.types == "Mediterranean" || req.body.types == "Chinese" || req.body.types == "Italian") {
         console.log("types input taken");
         type = 'True';
         typeValue = req.body.types;
@@ -339,8 +339,12 @@ app.post('/filter', (req, res) => {
         console.log("no types");
     }
 
+    var searchTerm = "restaurant";
+    if (type == 'True') {
+        searchTerm = typeValue;
+    }
     const searchRequest = {
-        term: 'restaurant',
+        term: searchTerm,
         location: 'college station, tx'
     };
 
@@ -357,17 +361,13 @@ app.post('/filter', (req, res) => {
                 i = i+1;
             }
         }
-        if (type == "True") {
-            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
-                i = i+1;
-            }
-        }
-        console.log(i);
+        
+        console.log("i value: " + i);
         longitude = response.jsonBody.businesses[i].coordinates.longitude;
         latitude = response.jsonBody.businesses[i].coordinates.latitude;
         name = response.jsonBody.businesses[i].name;
         address = response.jsonBody.businesses[i].location.address1;
-        console.log("hello");
+        console.log(name);
         console.log(latitude);
         console.log(longitude);
         //res.redirect("dashboard");
@@ -384,11 +384,7 @@ app.post('/filter', (req, res) => {
                 i = i+1;
             }
         }
-        if (type == "True") {
-            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
-                i = i+1;
-            }
-        }
+        
         console.log(i);
         longitude1 = response.jsonBody.businesses[i].coordinates.longitude;
         latitude1 = response.jsonBody.businesses[i].coordinates.latitude;
@@ -397,7 +393,7 @@ app.post('/filter', (req, res) => {
         console.log("hello");
         console.log(latitude1);
         console.log(longitude1);
-        res.redirect("dashboard");
+        //res.redirect("dashboard");
 
         i = i+1
         //var i = 0;
@@ -411,11 +407,7 @@ app.post('/filter', (req, res) => {
                 i = i+1;
             }
         }
-        if (type == "True") {
-            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
-                i = i+1;
-            }
-        }
+        
         console.log(i);
         longitude2 = response.jsonBody.businesses[i].coordinates.longitude;
         latitude2 = response.jsonBody.businesses[i].coordinates.latitude;
@@ -438,11 +430,7 @@ app.post('/filter', (req, res) => {
                 i = i+1;
             }
         }
-        if (type == "True") {
-            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
-                i = i+1;
-            }
-        }
+        
         console.log(i);
         longitude3 = response.jsonBody.businesses[i].coordinates.longitude;
         latitude3 = response.jsonBody.businesses[i].coordinates.latitude;
@@ -465,12 +453,9 @@ app.post('/filter', (req, res) => {
                 i = i+1;
             }
         }
-        if (type == "True") {
-            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
-                i = i+1;
-            }
-        }
+        
         console.log(i);
+        try {
         longitude4 = response.jsonBody.businesses[i].coordinates.longitude;
         latitude4 = response.jsonBody.businesses[i].coordinates.latitude;
         name4 = response.jsonBody.businesses[i].name;
@@ -478,6 +463,10 @@ app.post('/filter', (req, res) => {
         console.log("hello");
         console.log(latitude4);
         console.log(longitude4);
+        } catch (error) {
+            console.log("ERROR");
+            console.log(error);
+        }
         //res.redirect("dashboard");
 
         i = i+1
@@ -492,11 +481,7 @@ app.post('/filter', (req, res) => {
                 i = i+1;
             }
         }
-        if (type == "True") {
-            while (!(response.jsonBody.businesses[i].categories[0].title).includes(typeValue)) {
-                i = i+1;
-            }
-        }
+        
         console.log(i);
         longitude5 = response.jsonBody.businesses[i].coordinates.longitude;
         latitude5 = response.jsonBody.businesses[i].coordinates.latitude;
@@ -505,6 +490,7 @@ app.post('/filter', (req, res) => {
         console.log("hello");
         console.log(latitude5);
         console.log(longitude5);
+    
         res.redirect("dashboard");
 
     });
