@@ -18,6 +18,18 @@
 
     </head>
     <body>
+      <div id="helpOverlay" onclick="off()">
+        <div id="helpText">Instructions:
+          <ul>
+            <li>Click 'Show Me Restaurants' to populate nearby locations</li>
+            <li>Filter these nearby locations via the left side buttons</li>
+            <li>For speech to text, please click on the microphone icon and say the restaurant</li>
+            <li>Reset button will reset any in place filters</li>
+            <li>Click anywhere to leave instructions</li>
+          </ul>
+        </div>
+        
+      </div>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,6 +50,18 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/">LOG OUT</a>
                             </li>
+                            <li class="nav-item">
+                              <a class="nav-link" onclick="on()">HELP</a>
+                            </li>
+                            <script>
+                              function on() {
+                                document.getElementById("helpOverlay").style.display = "block";
+                              }
+
+                              function off() {
+                                document.getElementById("helpOverlay").style.display = "none";
+                              }
+                            </script>
                         </ul>
                     </nav>
                 </div>
