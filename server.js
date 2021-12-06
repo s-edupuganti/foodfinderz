@@ -365,7 +365,7 @@ app.post('/filter', (req, res) => {
     var priceTerm = "1,2,3,4";
     if (price == 'True') {
         priceTerm = priceValue;
-    
+    }
     const searchRequest = {
         term: searchTerm,
         location: 'college station, tx',
