@@ -160,6 +160,10 @@
             var latitude2 = parseFloat("<%= latitude2 %>");
             var longitude3 = parseFloat("<%= longitude3 %>");
             var latitude3 = parseFloat("<%= latitude3 %>");
+            var longitude4 = parseFloat("<%= longitude4 %>");
+            var latitude4 = parseFloat("<%= latitude4 %>");
+            var longitude5 = parseFloat("<%= longitude5 %>");
+            var latitude5 = parseFloat("<%= latitude5 %>");
             console.log("test 0 lol");
         function myMap() {
             // Create new map
@@ -169,6 +173,7 @@
             });
            
             function addMarker(coords) {
+                //console.log("ASKJF:KSHFG:KSDJG:LKSDJFLKJSDLKFJ");
                 var marker = new google.maps.Marker({
                     position: coords,
                     map: map,
@@ -177,11 +182,17 @@
             // addMarker({lat: latitude,lng: longitude})
             console.log("HI");
             // if (name1 != "") {
+            //addMarker({lat: 30.617171622926076, lng: -96.3207970411079})
               addMarker({lat: latitude1,lng: longitude1})
+              
               addMarker({lat: latitude2,lng: longitude2})
+              
               addMarker({lat: latitude3,lng: longitude3})
+              
               addMarker({lat: latitude4,lng: longitude4})
-              addMarker({lat: latitude5,lng: longitude5})
+              
+             addMarker({lat: latitude5,lng: longitude5})
+              
             // }
         }
         function clearBtns() {
