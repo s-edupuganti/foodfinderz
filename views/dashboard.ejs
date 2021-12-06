@@ -79,7 +79,7 @@
             <div style="padding-left:2%; float:left;position: relative;"> 
                 <h2>Filters</h2>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
-                <button onclick="insertMarker()">Reset</button>
+                <button onclick="clearBtns()">Reset</button>
                 <!--<span class="brmedium"></span> -->
                 <form action='/filter' method = "POST">
                   <!--<button onclick="insertMarker()">Apply</button>-->
@@ -180,7 +180,33 @@
               addMarker({lat: latitude5,lng: longitude5})
             // }
 
+        }
 
+        function clearBtns() {
+            var distances = document.getElementsByName("distance");
+            for(var i = 0; i < distances.length; i++)
+            {
+                if(distances[i].type == "radio")
+                {
+                    distances[i].checked = false;
+                }
+            }
+            var types = document.getElementsByName("types");
+            for(var i = 0; i < types.length; i++)
+            {
+                if(types[i].type == "radio")
+                {
+                    types[i].checked = false;
+                }
+            }
+            var price = document.getElementsByName("price");
+            for(var i = 0; i < price.length; i++)
+            {
+                if(price[i].type == "radio")
+                {
+                    price[i].checked = false;
+                }
+            }
         }
 
 
