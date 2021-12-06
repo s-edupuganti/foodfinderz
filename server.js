@@ -83,6 +83,8 @@ var address5;
 var latitude;
 var longitude;
 
+var resultsPresent = true;
+
 app.post('/login', function (req, res, next) {
     console.log("Getting to first function!");
     // console.log(req.body);
@@ -105,7 +107,7 @@ var userName = 'hello';
 
 
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard", {longitude: longitude, latitude: latitude, name: name, address: address, longitude1: longitude1, latitude1: latitude1, name1: name1, address1: address1, longitude2: longitude2, latitude2: latitude2, name2: name2, address2: address2, longitude2: longitude2, latitude3: latitude3, name3: name3, address3: address3, longitude3: longitude3, latitude3: latitude3, name3: name3, address3: address3, longitude4: longitude4, latitude4: latitude4, name4: name4, address4: address4, longitude5: longitude5, latitude5: latitude5, name5: name5, address5: address5 });
+    res.render("dashboard", {longitude: longitude, latitude: latitude, name: name, address: address, longitude1: longitude1, latitude1: latitude1, name1: name1, address1: address1, longitude2: longitude2, latitude2: latitude2, name2: name2, address2: address2, longitude2: longitude2, latitude3: latitude3, name3: name3, address3: address3, longitude3: longitude3, latitude3: latitude3, name3: name3, address3: address3, longitude4: longitude4, latitude4: latitude4, name4: name4, address4: address4, longitude5: longitude5, latitude5: latitude5, name5: name5, address5: address5, resultsPresent: resultsPresent });
 });
 
 app.post('/register', async (req, res) => {
@@ -327,6 +329,8 @@ app.post('/filter', (req, res) => {
     var distanceValue;
     var type = 'False';
     var typeValue;
+
+    
     
     console.log(req.body.price);
     if (req.body.price == '$' || req.body.price =="$$" || req.body.price =="$$$") {
@@ -387,6 +391,14 @@ app.post('/filter', (req, res) => {
         //         i = i+1;
         //     }
         // }
+        if (Object.keys( response.jsonBody.businesses ).length == 0) {
+            console.log("EMPTY");
+            resultsPresent = false;
+            res.redirect("dashboard");
+
+            return;
+        }
+        
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
