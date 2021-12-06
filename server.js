@@ -332,7 +332,14 @@ app.post('/filter', (req, res) => {
     if (req.body.price == '$' || req.body.price =="$$" || req.body.price =="$$$") {
         console.log("price input taken");
         price = 'True';
-        priceValue = req.body.price;
+        if (req.body.price == "$") {
+            priceValue = "1"
+        } else if (req.body.price == "$$") {
+            priceValue = "2"
+        } else if (req.body.price == "$$$") {
+            priceValue = "3"
+        }
+        //priceValue = req.body.price;
         //console.log(priceValue);
     } else {
         console.log("no price");
@@ -375,11 +382,11 @@ app.post('/filter', (req, res) => {
         
     client.search(searchRequest).then(response => {
         var i = 0;
-        if (price == "True") {
-            while (response.jsonBody.businesses[i].price != priceValue) {
-                i = i+1;
-            }
-        }
+        // if (price == "True") {
+        //     while (response.jsonBody.businesses[i].price != priceValue) {
+        //         i = i+1;
+        //     }
+        // }
         if (distance == "True") {
             while (response.jsonBody.businesses[i].distance < distanceValue*1609) {
                 i = i+1;
