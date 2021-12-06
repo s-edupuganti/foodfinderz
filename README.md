@@ -1,14 +1,10 @@
-# food-finderz
-A beautiful project
+Website link: http://foodfinderz.herokuapp.com/
 
-In order to run:
+Instructions to run locally:
 
-Download the file
-
-Delete node_modules folder
-
-run 'npm install'
-
-run 'npm audit fix'
-
-run npm run dev to work on localhost:4000
+- Make sure [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is installed
+- Remove node_modules folder (if present)
+- Run ```npm install```
+- Open folder in VS Code or IDE of your choice
+- Navigate to folder in terminal and run ```npm run dev```
+- Go to browser of your choice and type 'localhost:4000/'
