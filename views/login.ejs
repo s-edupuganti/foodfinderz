@@ -99,4 +99,23 @@
 		</div>
 	</div>
 </div>
+<div>
+	<ul>
+		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+		<li><%= error.message %></li>
+		<% }) %> <% } %>
+	  </ul>
+  
+	  <ul>
+		<% if(messages.success_msg) { %>
+		<li><%= messages.success_msg %></li>
+		<% } %>
+	  </ul>
+  
+	  <ul>
+		<% if (messages.error) { %>
+		<li><%= messages.error %></li>
+		<% } %>
+	  </ul>
+</div>
 <script src="login.js"></script>
