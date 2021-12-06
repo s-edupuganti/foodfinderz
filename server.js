@@ -229,6 +229,16 @@ app.post('/search', async (req, res) => {
         console.log("hello");
         console.log(latitude);
         console.log(longitude);
+        longitude1 = longitude;
+        longitude2 = "";
+        longitude3 = "";
+        longitude4 = "";
+        longitude5 = "";
+        latitude1 = latitude;
+        latitude2 = "";
+        latitude3 = "";
+        latitude4 = "";
+        latitude5 = "";
         name1 = "";
         address1 = "";
         name2 = "";
