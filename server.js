@@ -186,6 +186,7 @@ app.post("/login", passport.authenticate('local', {
 
 
 app.post('/search', async (req, res) => {
+    resultsPresent = true;
 
     // res.redirect("dashboard");
 
@@ -233,6 +234,7 @@ app.post('/search', async (req, res) => {
 app.post('/setUp', async (req, res) => {
 
     // res.redirect("dashboard");
+    resultsPresent = true;
 
     console.log("Test!");
     console.log("SetUp")
