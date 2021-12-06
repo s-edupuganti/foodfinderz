@@ -87,42 +87,44 @@
 
                 <span class="brmedium"></span> 
                 <h3>Distance</h3>
-                  <input type="radio" id="5mi" name="distance" value="5mi">
-                    <label for="5mi">5 miles</label><br>
-                  <input type="radio" id="10mi" name="distance" value="10mi">
-                    <label for="10mi">10 miles</label><br>
-                  <input type="radio" id="15mi" name="distance" value="15mi">
-                    <label for="15mi">15+ miles</label>
+                  <input type="radio" id="5mi" name="distance" value="5mi">
+                    <label for="5mi">5 miles</label><br>
+                  <input type="radio" id="10mi" name="distance" value="10mi">
+                    <label for="10mi">10 miles</label><br>
+                  <input type="radio" id="15mi" name="distance" value="15mi">
+                    <label for="15mi">15+ miles</label>
                 <span class="brmedium"></span> 
                   <h3>Price</h3>
                   <span class="brmedium"></span> 
-                    <input type="radio" id="$" name="price" value="$">
-                      <label for="$">$</label><br>
-                    <input type="radio" id="$$" name="price" value="$$">
-                      <label for="$$">$$</label><br>
-                    <input type="radio" id="$$$" name="price" value="$$$">
-                      <label for="$$$">$$$</label>
+                    <input type="radio" id="$" name="price" value="$">
+                      <label for="$">$</label><br>
+                    <input type="radio" id="$$" name="price" value="$$">
+                      <label for="$$">$$</label><br>
+                    <input type="radio" id="$$$" name="price" value="$$$">
+                      <label for="$$$">$$$</label>
                   <br> 
                   <h3>Type of Food</h3>
                 <span class="brmedium"></span> 
                 
-                  <input type="radio" id="Fast" name="types" value="Fast Food">
-                    <label for="Fast">Fast Food</label><br>
-                  <input type="radio" id="American" name="types" value="American">
-                    <label for="American">American</label><br>
-                  <input type="radio" id="Chinese" name="types" value="Chinese">
-                    <label for="Chinese">Chinese</label><br>
+                  <input type="radio" id="Fast" name="types" value="Fast Food">
+                    <label for="Fast">Fast Food</label><br>
+                  <input type="radio" id="American" name="types" value="American">
+                    <label for="American">American</label><br>
+                  <input type="radio" id="Chinese" name="types" value="Chinese">
+                    <label for="Chinese">Chinese</label><br>
                   <input type="radio" id="Mediterranean" name="types" value="Mediterranean">
-                    <label for="Mediterranean">Mediterranean</label><br>
-                  <input type="radio" id="Thai" name="types" value="Thai">
-                    <label for="Thai">Thai</label><br>
-                  <input type="radio" id="Italian" name="types" value="Italian">
-                    <label for="Italian">Italian</label>
+                    <label for="Mediterranean">Mediterranean</label><br>
+                  <input type="radio" id="Thai" name="types" value="Thai">
+                    <label for="Thai">Thai</label><br>
+                  <input type="radio" id="Italian" name="types" value="Italian">
+                    <label for="Italian">Italian</label>
                 <br>
                 </form>
             </div>
             <div style="margin-left:20%; float:left; position:absolute; margin-right: 60%;">
                 <h2>Results</h2>
+                
+                <% if (resultsPresent) {  %>
                 <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
                 <h3 style="font-size: 150%;"><b><%= name %></b></h3>
                 <h5 stle="font-size: 100%;"><%= address %></h5>
@@ -138,6 +140,12 @@
                 <br>
                 <h3 style="font-size: 150%;"><b><%= name4 %></b></h3>
                 <h5 stle="font-size: 100%;"><%= address4 %></h5>
+            <% } %>  
+                
+            <% if (!resultsPresent) {  %>
+                <hr style= "height:2px;border-width:0;color:gray;background-color:gray">
+                <h3 style="font-size: 150%;"><b>No Results</b></h3>
+                <% } %> 
             </div>
             
         </div>
@@ -152,16 +160,13 @@
             var latitude2 = parseFloat("<%= latitude2 %>");
             var longitude3 = parseFloat("<%= longitude3 %>");
             var latitude3 = parseFloat("<%= latitude3 %>");
-
             console.log("test 0 lol");
-
         function myMap() {
             // Create new map
             var map = new google.maps.Map(document.getElementById("googleMap"), {
                 zoom: 14,
                 center: {lat: latitude, lng: longitude},
             });
-
            
             function addMarker(coords) {
                 var marker = new google.maps.Marker({
@@ -169,7 +174,6 @@
                     map: map,
                 });
             }
-
             // addMarker({lat: latitude,lng: longitude})
             console.log("HI");
             // if (name1 != "") {
@@ -179,9 +183,7 @@
               addMarker({lat: latitude4,lng: longitude4})
               addMarker({lat: latitude5,lng: longitude5})
             // }
-
         }
-
         function clearBtns() {
             var distances = document.getElementsByName("distance");
             for(var i = 0; i < distances.length; i++)
@@ -208,8 +210,6 @@
                 }
             }
         }
-
-
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB20lJqGQ9WxvwHB-SfIn-Ln8-lK9sQh0
