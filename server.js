@@ -9,7 +9,7 @@ const flash = require("express-flash");
 const passport = require("passport"); 
 const yelp = require("yelp-fusion");
 const initializePass = require("./passportManager");
-const apiKey = '***REMOVED***';
+const apiKey = '';
 const client = yelp.client(apiKey);
 
 
